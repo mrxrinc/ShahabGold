@@ -1,25 +1,33 @@
 import React, { Component } from 'react'
 import { View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Navigation } from "react-native-navigation"
 import { Text, Icon } from './font'
 import r from '../styles/rinc'
 import g from '../styles/general'
-import { Navigation } from 'react-native-navigation';
 
 export default class Tabbar extends Component {
 
-  color(active) {
+  activeIcon(active) {
     switch(active) {
       case 'home':
-        return this.props.active === 'home' ? r.primary : g.gray1
+        return this.props.active === 'home' ? true : false
       case 'search':
-        return this.props.active === 'search' ? r.primary : g.gray1
+        return this.props.active === 'search' ? true : false
       case 'profile':
-        return this.props.active === 'profile' ? r.primary : g.gray1
+        return this.props.active === 'profile' ? true : false
       case 'cart':
-        return this.props.active === 'cart' ? r.primary : g.gray1
+        return this.props.active === 'cart' ? true : false
       default:
-        return g.gray1
+        return false
     }
+  }
+
+  action = route => {
+    Navigation.setStackRoot(this.props.componentId, {
+        component: {
+          name: route
+        }
+    })
   }
 
   render() {
@@ -27,32 +35,30 @@ export default class Tabbar extends Component {
       <View style={[s.wrapper, r.row, r.wFull, r.spaceAround]}>
 
         <Button
-          onPress={this.props.action}
-          icon={'home'}
-          iconStyle={r.grayMid}
+          onPress={() => this.action('Home')}
+          icon={this.activeIcon('home') ? 'home-active': 'home'}
+          iconStyle={this.activeIcon('home') ? g.primary : g.gray1}
         />
 
-        <Button 
-          style={[r.center, r.f]}
-          onPress={this.props.action}
-        >
-          <Icon name={'search'} size={17} style={this.color('home')} />
-        </Button>
+        <Button
+          onPress={() => this.action('Search')}
+          icon={this.activeIcon('search') ? 'search-active': 'search'}
+          iconStyle={this.activeIcon('search') ? g.primary : g.gray1}
+        />
 
-        <Button 
-          style={[r.center]}
-          onPress={this.props.action}
-        >
-          <Icon name={'profile'} size={17} style={this.color('home')} />
-        </Button>
+        <Button
+          onPress={() => this.action('Profile')}
+          icon={this.activeIcon('profile') ? 'profile-active': 'profile'}
+          iconStyle={this.activeIcon('profile') ? g.primary : g.gray1}
+          count={null}
+        />
 
-        <Button 
-          style={[r.center]}
-          onPress={this.props.action}
-        >
-          <Icon name={'cart'} size={17} style={this.color('home')} />
-        </Button>
-
+        <Button
+          onPress={() => this.action('Cart')}
+          icon={this.activeIcon('cart') ? 'cart-active': 'cart'}
+          iconStyle={this.activeIcon('cart') ? g.primary : g.gray1}
+          count={3}
+        />
 
       </View>
     )
@@ -60,22 +66,25 @@ export default class Tabbar extends Component {
 }
 
 const Button = props => (
-  <TouchableOpacity style={[r.center, s.button, r.f]} onPress={props.onPress}>
+  <TouchableOpacity style={[r.center, s.button]} onPress={props.onPress}>
     <Icon name={props.icon} size={20} style={props.iconStyle} />
-    <View 
-      style={[s.counter, r.absolute, g.bgPrimary, r.center, r.hP3, {
-        minWidth: 18, height: 18, right: 5, bottom: 6 }
-    ]}>
-      <Text
-        size={13}
-        height={12}
-        lineHeight={19}
-        includefontPadding={false}
-        style={[r.centerText, r.white, { writingDirection: 'ltr', lineHeight: 16 }]}
-      >
-        3
-      </Text>
-    </View>
+    {props.count && (
+      <View 
+        style={[s.counter, r.absolute, g.bgPrimary, r.center, r.hP3, {
+          minWidth: 18, height: 18, right: 5, bottom: 6 }
+      ]}>
+        <Text
+          size={13}
+          height={12}
+          lineHeight={19}
+          includefontPadding={false}
+          bold
+          style={[r.centerText, r.white, { writingDirection: 'ltr', lineHeight: 16 }]}
+        >
+          {props.count}
+        </Text>
+      </View>
+    )}
   </TouchableOpacity>
 )
 
@@ -89,53 +98,3 @@ const s = StyleSheet.create({
     width: 50
   }
 })
-
-
-
-
-
-
-
-
-        {/* <Button 
-          style={[r.center]}
-          androidStyle={[r.full]}
-          ripple={'#ffffff11'}
-          expandableRipple
-          onPress={
-            this.props.active !== 'more' ? () => {
-              this.props.navigator.push({
-                screen: 'More',
-                animationType: 'fade'
-              })
-            } : this.props.childOfMore ? () => { // now the childs of 'More' will pop back on 'More' tab press
-              this.props.navigator.pop()
-            } : null
-          }
-        >
-          <View>
-            <Icon name={'more'} size={30} style={[this.color('more')]}/>
-            <Text size={12} height={22} lineHeight={23} style={[r.centerText, r.white, r.topM5]}>
-              بیشتر
-            </Text>
-
-            {this.props.notificationCount && ( // make it null if there is no count number
-              <View 
-                style={[r.absolute, g.bgRedLight, r.round20, r.center, {
-                  minWidth: 20, height: 20, right: -12, top: -3 }
-                ]}
-              >
-                <Text
-                  size={13}
-                  height={12}
-                  lineHeight={19}
-                  includefontPadding={false}
-                  style={[r.centerText, r.white, { writingDirection: 'ltr' }]}
-                >
-                  {this.props.notificationCount}
-                </Text>
-              </View>
-            )}
-          </View>
-
-        </Button> */}

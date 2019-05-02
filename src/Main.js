@@ -1,9 +1,9 @@
 import { Navigation } from "react-native-navigation"
 import { Provider } from 'react-redux'
-import {AppRegistry} from 'react-native'
+import { AppRegistry } from 'react-native'
 import { registerScreens } from './Screens'
 import configureStore from './store/configureStore'
-import {name as appName} from '../app.json'
+import { name as appName } from '../app.json'
 
 const store = configureStore()
 registerScreens(store, Provider)
@@ -19,16 +19,22 @@ Navigation.events().registerAppLaunchedListener(() => {
     layout: {
       orientation: ['portrait'],
       backgroundColor: 'white'
+    },
+    statusBar: {
+      blur: true,
+      drawBehind: true,
+      backgroundColor: 'transparent',
+      style: 'dark'  
     }
   })
-  
+
   Navigation.setRoot({
     root: {
       stack: {
         children: [
           {
             component: {
-              name: "Splash"
+              name: "Home"
             }
           }
         ]

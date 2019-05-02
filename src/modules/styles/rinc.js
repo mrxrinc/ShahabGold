@@ -277,28 +277,28 @@ module.exports = StyleSheet.create({
     shadowColor: '#000', 
     shadowRadius: 3, 
     shadowOpacity: 0.3, 
-    shadowOffset: {width: 0, height: 3 },
+    shadowOffset: { width: 0, height: 3 },
   },
   shadow5: {   //multi platform
     elevation: 5, 
     shadowColor: '#000', 
     shadowRadius: 5, 
     shadowOpacity: 0.3, 
-    shadowOffset: {width: 0, height: 5 }
+    shadowOffset: { width: 0, height: 5 }
   },
   shadow10: {   //multi platform
     elevation: 10, 
     shadowColor: '#000', 
     shadowRadius: 10, 
     shadowOpacity: 0.3, 
-    shadowOffset: {width: 0, height: 5 }
+    shadowOffset: { width: 0, height: 5 }
   },
   shadow20: {   //multi platform
     elevation: 20, 
     shadowColor: '#000', 
     shadowRadius: 20, 
     shadowOpacity: 0.3, 
-    shadowOffset: {width: 0, height: 5 }
+    shadowOffset: { width: 0, height: 5 }
   },
   i2: { width: '50%' },
   i3: { width: '33.3333%' },

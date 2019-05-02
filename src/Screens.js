@@ -3,24 +3,12 @@ import React from 'react'
 import { Navigation } from 'react-native-navigation'
 import { ReduxNetworkProvider } from 'react-native-offline'
 
-import App from "./App"
-import App02 from "./App02"
-import Splash from "./modules/Splash"
+import Home from "./modules/pages/home"
 
 export function registerScreens(store, Provider) {
-  Navigation.registerComponent('Page01', () => props => (
+  Navigation.registerComponent('Home', () => props => (
     <Provider store={store}>
-      <App {...props} />
+      <Home {...props} />
     </Provider>
-  ), () => App),
-  Navigation.registerComponent('Page02', () => props => (
-    <Provider store={store}>
-      <App02 {...props} />
-    </Provider>
-  ), () => App02),
-  Navigation.registerComponent('Splash', () => props => (
-    <Provider store={store}>
-      <Splash {...props} />
-    </Provider>
-  ), () => Splash)
+  ), () => Home)
 }

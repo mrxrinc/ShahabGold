@@ -6,6 +6,7 @@ import { navigatorStyle } from './assets'
 import { Text, Icon } from './components/font'
 import Loading from './components/loading'
 import Tabbar from './components/tabbar'
+import HomeHead from './components/homeHead'
 import * as r from './styles/rinc'
 import * as g from './styles/general'
 import API from './utils/service'
@@ -31,10 +32,13 @@ class Splash extends Component {
   render() {
     return (
       <View style={[r.full]}>
-        <View style={[r.full, r.center]}>
-          <Text>Splash</Text>
+      <HomeHead />
+        <View style={[r.full, r.center, r.wrap, r.f]}>
+          
+          <View style={[]}></View>
+
         </View>
-        <Tabbar action={this.action} />
+        <Tabbar componentId={this.props.componentId} active={'home'} />
       </View>
     )
   }
