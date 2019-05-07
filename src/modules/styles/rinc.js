@@ -59,6 +59,9 @@ module.exports = StyleSheet.create({
     fontWeight: '100',
     fontSize: 10
   },
+  lightFont: {
+    fontWeight: '100'
+  },
   largeText:{ fontSize: 16 },
   bigText:{ fontSize: 14 },
   midText:{ fontSize: 11 },
