@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { View } from 'react-native-animatable'
 import { Navigation } from "react-native-navigation"
-// import { Text, Icon } from '../../components/font'
-// import Loading from '../../components/loading'
+import { Text, Icon } from '../../components/font'
+import Loading from '../../components/loading'
 import Tabbar from '../../components/tabbar'
 import HomeHead from '../../components/homeHead'
 import * as r from '../../styles/rinc'
 import * as g from '../../styles/general'
 import * as s from './style'
-// import API from '../../utils/service'
 
 class Home extends Component {
   constructor(props) {

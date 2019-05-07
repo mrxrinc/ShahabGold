@@ -1,7 +1,6 @@
 import { AsyncStorage } from 'react-native'
 import axios from 'axios'
 import { checkInternetConnection } from 'react-native-offline'
-// import RNExitApp from 'react-native-exit-app'
 import * as api from '../../constants/api'
 import * as util from './index'
 import * as action from '../../actions'
